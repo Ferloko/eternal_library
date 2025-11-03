@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Libros - Biblioteca Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Biblioteca Digital</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="generic.html">Clases</a></li>
+				<li><a href="usuarios.html">Usuarios</a></li>
+				<li class="active"><a href="libros.html">Libros</a></li>
+				<li><a href="bibliotecarios.html">Bibliotecarios</a></li>
+				<li><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<section class="post">
+				<header class="major">
+					<h1>Gestión de Libros</h1>
+					<p>Administra el catálogo de libros de la biblioteca</p>
+				</header>
+
+				<!-- Formulario de Libros -->
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-id">ID Libro</label>
+						<input type="text" name="libro-id" id="libro-id" value="" placeholder="ID (automático)"
+							disabled />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-titulo">Título</label>
+						<input type="text" name="libro-titulo" id="libro-titulo" value=""
+							placeholder="Título del libro" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-autor">Autor</label>
+						<input type="text" name="libro-autor" id="libro-autor" value="" placeholder="Autor del libro" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-isbn">ISBN</label>
+						<input type="text" name="libro-isbn" id="libro-isbn" value="" placeholder="ISBN del libro" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-categoria">Categoría</label>
+						<select name="libro-categoria" id="libro-categoria">
+							<option value="ficcion">Ficción</option>
+							<option value="no-ficcion">No Ficción</option>
+							<option value="ciencia">Ciencia</option>
+							<option value="historia">Historia</option>
+							<option value="biografia">Biografía</option>
+						</select>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="libro-ejemplares">Ejemplares disponibles</label>
+						<input type="number" name="libro-ejemplares" id="libro-ejemplares" value="1" min="0" />
+					</div>
+					<div class="col-12">
+						<label for="libro-descripcion">Descripción</label>
+						<textarea name="libro-descripcion" id="libro-descripcion" placeholder="Descripción del libro"
+							rows="3"></textarea>
+					</div>
+					<div class="col-12">
+						<hr>
+						<ul class="actions">
+							<li><input type="button" value="Nuevo" class="primary" onclick="nuevoLibro()" /></li>
+							<li><input type="button" value="Guardar" class="primary" onclick="guardarLibro()" /></li>
+							<li><input type="button" value="Eliminar" class="button" onclick="eliminarLibro()" /></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Tabla de libros -->
+				<h3>Catálogo de Libros</h3>
+				<div class="table-wrapper">
+					<table id="tabla-libros" class="alt">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Título</th>
+								<th>Autor</th>
+								<th>ISBN</th>
+								<th>Categoría</th>
+								<th>Disponibles</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Los datos se cargarán dinámicamente con JavaScript -->
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Necesitas ayuda?</h2>
+				<p>Si tienes alguna pregunta sobre el catálogo de libros, no dudes en contactar a nuestro equipo de
+					soporte.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:libros@bibliotecadigital.cl">libros@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Raices Eternas. Creado por Rafa #22 y Yani #15 - 6to DAAI</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<!-- Scripts específicos para la gestión de libros -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			cargarLibros();
+		});
+
+		function cargarLibros() {
+			var libros = [
+				{ id: 1, titulo: "Cien años de soledad", autor: "Gabriel García Márquez", isbn: "9780307474728", categoria: "ficcion", ejemplares: 5 },
+				{ id: 2, titulo: "El principito", autor: "Antoine de Saint-Exupéry", isbn: "9780156013926", categoria: "ficcion", ejemplares: 3 },
+				{ id: 3, titulo: "Sapiens: De animales a dioses", autor: "Yuval Noah Harari", isbn: "9788499926223", categoria: "no-ficcion", ejemplares: 2 }
+			];
+
+			var tbody = document.querySelector("#tabla-libros tbody");
+			tbody.innerHTML = "";
+
+			libros.forEach(function (libro) {
+				var tr = document.createElement("tr");
+				tr.innerHTML = `
+						<td>${libro.id}</td>
+						<td>${libro.titulo}</td>
+						<td>${libro.autor}</td>
+						<td>${libro.isbn}</td>
+						<td>${libro.categoria}</td>
+						<td>${libro.ejemplares}</td>
+						<td>
+							<button class="button small" onclick="editarLibro(${libro.id})">Editar</button>
+							<button class="button small" onclick="eliminarLibro(${libro.id})">Eliminar</button>
+						</td>
+					`;
+				tbody.appendChild(tr);
+			});
+		}
+
+		function nuevoLibro() {
+			document.getElementById("libro-id").value = "";
+			document.getElementById("libro-titulo").value = "";
+			document.getElementById("libro-autor").value = "";
+			document.getElementById("libro-isbn").value = "";
+			document.getElementById("libro-categoria").value = "ficcion";
+			document.getElementById("libro-ejemplares").value = "1";
+			document.getElementById("libro-descripcion").value = "";
+		}
+
+		function guardarLibro() {
+			var id = document.getElementById("libro-id").value;
+			var titulo = document.getElementById("libro-titulo").value;
+			var autor = document.getElementById("libro-autor").value;
+			var isbn = document.getElementById("libro-isbn").value;
+			var categoria = document.getElementById("libro-categoria").value;
+			var ejemplares = document.getElementById("libro-ejemplares").value;
+			var descripcion = document.getElementById("libro-descripcion").value;
+
+			if (!titulo || !autor || !isbn) {
+				alert("Por favor complete todos los campos obligatorios");
+				return;
+			}
+
+			console.log("Guardando libro:", { id, titulo, autor, isbn, categoria, ejemplares, descripcion });
+
+			cargarLibros();
+		}
+
+		function eliminarLibro(id) {
+			if (!id) {
+				alert("Seleccione un libro para eliminar");
+				return;
+			}
+
+			if (confirm("¿Está seguro de que desea eliminar este libro?")) {
+				console.log("Eliminando libro con ID:", id);
+
+				cargarLibros();
+				nuevoLibro();
+			}
+		}
+
+		function editarLibro(id) {
+			var libros = [
+				{ id: 1, titulo: "Cien años de soledad", autor: "Gabriel García Márquez", isbn: "9780307474728", categoria: "ficcion", ejemplares: 5 },
+				{ id: 2, titulo: "El principito", autor: "Antoine de Saint-Exupéry", isbn: "9780156013926", categoria: "ficcion", ejemplares: 3 },
+				{ id: 3, titulo: "Sapiens: De animales a dioses", autor: "Yuval Noah Harari", isbn: "9788499926223", categoria: "no-ficcion", ejemplares: 2 }
+			];
+
+			var libro = libros.find(function (libro) {
+				return libro.id == id;
+			});
+
+			if (libro) {
+				document.getElementById("libro-id").value = libro.id;
+				document.getElementById("libro-titulo").value = libro.titulo;
+				document.getElementById("libro-autor").value = libro.autor;
+				document.getElementById("libro-isbn").value = libro.isbn;
+				document.getElementById("libro-categoria").value = libro.categoria;
+				document.getElementById("libro-ejemplares").value = libro.ejemplares;
+			}
+		}
+	</script>
+
+<!--  <h1> Autores: </h1>
+
+                                                                    :=:                  
+                                                                 :*+=-+*                  
+                                                                -@-                       
+                                                                %@                        
+                                                                @%                        
+                                                               .@*              .         
+                         .:-==++++==:.                         :@*        :**++@@:        
+                  .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+              .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+           :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+         -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+        =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+        %@-         .-=-=@%           -%-       %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+        -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+          +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+       :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+    :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+  :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+ =:                    .@= .+%%+:             #-#*:  =         @#                         
+ -                     -@.    .=%@#=.         =-      -*      -@-                         
+                       #*         -+%@*=:     =:       #%=-: .%=                          
+     ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+     .%               %+                                  ..       .::--===========--:.   
+      +%.            **                                                                   
+       +@+          *+                                                                    
+        .*@*=:   .=#-                                                                     
+           :=*#%#*-    
+-->
+
+</body>
+
+</html>

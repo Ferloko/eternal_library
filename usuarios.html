@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Usuarios - Biblioteca Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Biblioteca Digital</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="generic.html">Clases</a></li>
+				<li class="active"><a href="usuarios.html">Usuarios</a></li>
+				<li><a href="libros.html">Libros</a></li>
+				<li><a href="bibliotecarios.html">Bibliotecarios</a></li>
+				<li><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<section class="post">
+				<header class="major">
+					<h1>Gestión de Usuarios</h1>
+					<p>Administra los usuarios registrados en el sistema de biblioteca</p>
+				</header>
+
+				<!-- Formulario de Usuarios -->
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-id">ID Usuario</label>
+						<input type="text" name="usuario-id" id="usuario-id" value="" placeholder="ID (automático)"
+							disabled />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-nombre">Nombre</label>
+						<input type="text" name="usuario-nombre" id="usuario-nombre" value=""
+							placeholder="Nombre del usuario" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-apellido">Apellido</label>
+						<input type="text" name="usuario-apellido" id="usuario-apellido" value=""
+							placeholder="Apellido del usuario" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-email">Email</label>
+						<input type="email" name="usuario-email" id="usuario-email" value=""
+							placeholder="usuario@ejemplo.com" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-telefono">Teléfono</label>
+						<input type="text" name="usuario-telefono" id="usuario-telefono" value=""
+							placeholder="+56 9 1234 5678" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="usuario-estado">Estado</label>
+						<select name="usuario-estado" id="usuario-estado">
+							<option value="activo">Activo</option>
+							<option value="inactivo">Inactivo</option>
+							<option value="suspendido">Suspendido</option>
+						</select>
+					</div>
+					<div class="col-12">
+						<hr>
+						<ul class="actions">
+							<li><input type="button" value="Nuevo" class="primary" onclick="nuevoUsuario()" /></li>
+							<li><input type="button" value="Guardar" class="primary" onclick="guardarUsuario()" /></li>
+							<li><input type="button" value="Eliminar" class="button" onclick="eliminarUsuario()" /></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Tabla de usuarios -->
+				<h3>Usuarios Registrados</h3>
+				<div class="table-wrapper">
+					<table id="tabla-usuarios" class="alt">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Email</th>
+								<th>Teléfono</th>
+								<th>Estado</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Los datos se cargarán dinámicamente con JavaScript -->
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Necesitas ayuda?</h2>
+				<p>Si tienes alguna pregunta sobre la gestión de usuarios, no dudes en contactar a nuestro equipo de
+					soporte.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:usuarios@bibliotecadigital.cl">usuarios@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Raices Eternas. Creado por Rafa #22 y Yani #15 - 6to DAAI</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+<!--  <h1> Autores: </h1>
+
+                                                                    :=:                  
+                                                                 :*+=-+*                  
+                                                                -@-                       
+                                                                %@                        
+                                                                @%                        
+                                                               .@*              .         
+                         .:-==++++==:.                         :@*        :**++@@:        
+                  .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+              .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+           :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+         -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+        =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+        %@-         .-=-=@%           -%-       %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+        -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+          +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+       :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+    :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+  :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+ =:                    .@= .+%%+:             #-#*:  =         @#                         
+ -                     -@.    .=%@#=.         =-      -*      -@-                         
+                       #*         -+%@*=:     =:       #%=-: .%=                          
+     ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+     .%               %+                                  ..       .::--===========--:.   
+      +%.            **                                                                   
+       +@+          *+                                                                    
+        .*@*=:   .=#-                                                                     
+           :=*#%#*-    
+-->
+
+</body>
+
+</html>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			cargarUsuarios();
+		});
+
+		function cargarUsuarios() {
+			var usuarios = [
+				{ id: 1, nombre: "Juan", apellido: "Pérez", email: "juan.perez@ejemplo.com", telefono: "+56 9 1234 5678", estado: "activo" },
+				{ id: 2, nombre: "María", apellido: "González", email: "maria.gonzalez@ejemplo.com", telefono: "+56 9 8765 4321", estado: "activo" },
+				{ id: 3, nombre: "Carlos", apellido: "López", email: "carlos.lopez@ejemplo.com", telefono: "+56 9 5555 1234", estado: "inactivo" }
+			];
+
+			var tbody = document.querySelector("#tabla-usuarios tbody");
+			tbody.innerHTML = "";
+
+			usuarios.forEach(function (usuario) {
+				var tr = document.createElement("tr");
+				tr.innerHTML = `
+						<td>${usuario.id}</td>
+						<td>${usuario.nombre}</td>
+						<td>${usuario.apellido}</td>
+						<td>${usuario.email}</td>
+						<td>${usuario.telefono}</td>
+						<td>${usuario.estado}</td>
+						<td>
+							<button class="button small" onclick="editarUsuario(${usuario.id})">Editar</button>
+							<button class="button small" onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
+						</td>
+					`;
+				tbody.appendChild(tr);
+			});
+		}
+
+		function nuevoUsuario() {
+			document.getElementById("usuario-id").value = "";
+			document.getElementById("usuario-nombre").value = "";
+			document.getElementById("usuario-apellido").value = "";
+			document.getElementById("usuario-email").value = "";
+			document.getElementById("usuario-telefono").value = "";
+			document.getElementById("usuario-estado").value = "activo";
+		}
+
+		function guardarUsuario() {
+			var id = document.getElementById("usuario-id").value;
+			var nombre = document.getElementById("usuario-nombre").value;
+			var apellido = document.getElementById("usuario-apellido").value;
+			var email = document.getElementById("usuario-email").value;
+			var telefono = document.getElementById("usuario-telefono").value;
+			var estado = document.getElementById("usuario-estado").value;
+
+			if (!nombre || !apellido || !email) {
+				alert("Por favor complete los campos obligatorios (Nombre, Apellido y Email)");
+				return;
+			}
+
+			alert(`Usuario ${id ? 'actualizado' : 'guardado'} correctamente`);
+			cargarUsuarios();
+			nuevoUsuario(); 
+		}
+
+		function eliminarUsuario(id) {
+			if (id) {
+				if (confirm("¿Está seguro de eliminar este usuario?")) {
+					alert("Usuario eliminado correctamente");
+					cargarUsuarios();
+					nuevoUsuario();
+				}
+			} else {
+				alert("Seleccione un usuario para eliminar");
+			}
+		}
+
+		function editarUsuario(id) {
+			var usuario = {
+				id: id,
+				nombre: "Nombre Ejemplo",
+				apellido: "Apellido Ejemplo",
+				email: "ejemplo@ejemplo.com",
+				telefono: "+56 9 9999 9999",
+				estado: "activo"
+			};
+
+			document.getElementById("usuario-id").value = usuario.id;
+			document.getElementById("usuario-nombre").value = usuario.nombre;
+			document.getElementById("usuario-apellido").value = usuario.apellido;
+			document.getElementById("usuario-email").value = usuario.email;
+			document.getElementById("usuario-telefono").value = usuario.telefono;
+			document.getElementById("usuario-estado").value = usuario.estado;
+		}
+	</script>
+
+<!--  <h1> Autores: </h1>
+
+                                                                    :=:                  
+                                                                 :*+=-+*                  
+                                                                -@-                       
+                                                                %@                        
+                                                                @%                        
+                                                               .@*              .         
+                         .:-==++++==:.                         :@*        :**++@@:        
+                  .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+              .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+           :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+         -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+        =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+        %@-         .-=-=@%           -%-       %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+        -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+          +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+       :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+    :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+  :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+ =:                    .@= .+%%+:             #-#*:  =         @#                         
+ -                     -@.    .=%@#=.         =-      -*      -@-                         
+                       #*         -+%@*=:     =:       #%=-: .%=                          
+     ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+     .%               %+                                  ..       .::--===========--:.   
+      +%.            **                                                                   
+       +@+          *+                                                                    
+        .*@*=:   .=#-                                                                     
+           :=*#%#*-    
+-->
+
+</body>
+
+</html>

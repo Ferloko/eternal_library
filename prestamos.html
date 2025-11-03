@@ -1,0 +1,549 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Préstamos - Biblioteca Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Biblioteca Digital</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="generic.html">Clases</a></li>
+				<li><a href="usuarios.html">Usuarios</a></li>
+				<li><a href="libros.html">Libros</a></li>
+				<li><a href="bibliotecarios.html">Bibliotecarios</a></li>
+				<li class="active"><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<section class="post">
+				<header class="major">
+					<h1>Gestión de Préstamos</h1>
+					<p>Administra los préstamos de libros de la biblioteca</p>
+				</header>
+
+				<!-- Formulario de Préstamos -->
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-id">ID Préstamo</label>
+						<input type="text" name="prestamo-id" id="prestamo-id" value="" placeholder="ID (automático)"
+							disabled />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-usuario">Usuario</label>
+						<select name="prestamo-usuario" id="prestamo-usuario">
+							<option value="">Seleccione un usuario</option>
+							<option value="1">Juan Pérez</option>
+							<option value="2">María González</option>
+							<option value="3">Carlos López</option>
+						</select>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-libro">Libro</label>
+						<select name="prestamo-libro" id="prestamo-libro">
+							<option value="">Seleccione un libro</option>
+							<option value="1">Cien años de soledad - Gabriel García Márquez</option>
+							<option value="2">El principito - Antoine de Saint-Exupéry</option>
+							<option value="3">Sapiens: De animales a dioses - Yuval Noah Harari</option>
+						</select>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-fecha-prestamo">Fecha de préstamo</label>
+						<input type="date" name="prestamo-fecha-prestamo" id="prestamo-fecha-prestamo" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-fecha-devolucion">Fecha de devolución</label>
+						<input type="date" name="prestamo-fecha-devolucion" id="prestamo-fecha-devolucion" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="prestamo-estado">Estado</label>
+						<select name="prestamo-estado" id="prestamo-estado">
+							<option value="prestado">Prestado</option>
+							<option value="devuelto">Devuelto</option>
+							<option value="atrasado">Atrasado</option>
+							<option value="perdido">Perdido</option>
+						</select>
+					</div>
+					<div class="col-12">
+						<label for="prestamo-observaciones">Observaciones</label>
+						<textarea name="prestamo-observaciones" id="prestamo-observaciones"
+							placeholder="Ingrese observaciones sobre el préstamo" rows="2"></textarea>
+					</div>
+					<div class="col-12">
+						<hr>
+						<ul class="actions">
+							<li><input type="button" value="Nuevo" class="primary" onclick="nuevoPrestamo()" /></li>
+							<li><input type="button" value="Guardar" class="primary" onclick="guardarPrestamo()" /></li>
+							<li><input type="button" value="Devolver" class="button" onclick="devolverPrestamo()" />
+							</li>
+							<li><input type="button" value="Eliminar" class="button" onclick="eliminarPrestamo()" />
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Filtros de búsqueda -->
+				<h3>Filtros de Búsqueda</h3>
+				<div class="row gtr-uniform">
+					<div class="col-4 col-12-xsmall">
+						<label for="filtro-usuario">Usuario</label>
+						<select name="filtro-usuario" id="filtro-usuario">
+							<option value="">Todos los usuarios</option>
+							<option value="1">Juan Pérez</option>
+							<option value="2">María González</option>
+							<option value="3">Carlos López</option>
+						</select>
+					</div>
+					<div class="col-4 col-12-xsmall">
+						<label for="filtro-estado">Estado</label>
+						<select name="filtro-estado" id="filtro-estado">
+							<option value="">Todos los estados</option>
+							<option value="prestado">Prestado</option>
+							<option value="devuelto">Devuelto</option>
+							<option value="atrasado">Atrasado</option>
+							<option value="perdido">Perdido</option>
+						</select>
+					</div>
+					<div class="col-4 col-12-xsmall">
+						<label for="filtro-fecha">Fecha</label>
+						<input type="month" name="filtro-fecha" id="filtro-fecha" />
+					</div>
+					<div class="col-12">
+						<ul class="actions">
+							<li><input type="button" value="Buscar" class="primary" onclick="filtrarPrestamos()" /></li>
+							<li><input type="button" value="Limpiar" class="button" onclick="limpiarFiltros()" /></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Tabla de préstamos -->
+				<h3>Registro de Préstamos</h3>
+				<div class="table-wrapper">
+					<table id="tabla-prestamos" class="alt">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Usuario</th>
+								<th>Libro</th>
+								<th>Fecha Préstamo</th>
+								<th>Fecha Devolución</th>
+								<th>Estado</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Los datos se cargarán dinámicamente con JavaScript -->
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Necesitas ayuda?</h2>
+				<p>Si tienes alguna pregunta sobre los préstamos, no dudes en contactar a nuestro equipo de atención al
+					usuario.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:prestamos@bibliotecadigital.cl">prestamos@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Raices Eternas. Creado por Rafa #22 y Yani #15 - 6to DAAI</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<!-- Scripts específicos para la gestión de préstamos -->
+	<script>
+		// Cargar préstamos al iniciar la página
+		document.addEventListener("DOMContentLoaded", function () {
+			var hoy = new Date().toISOString().split('T')[0];
+			document.getElementById("prestamo-fecha-prestamo").value = hoy;
+
+			var fechaDevolucion = new Date();
+			fechaDevolucion.setDate(fechaDevolucion.getDate() + 7);
+			document.getElementById("prestamo-fecha-devolucion").value = fechaDevolucion.toISOString().split('T')[0];
+
+			cargarPrestamos();
+		});
+
+		function cargarPrestamos(filtros = {}) {
+			var prestamos = [
+				{
+					id: 1,
+					usuarioId: 1,
+					usuario: "Juan Pérez",
+					libroId: 1,
+					libro: "Cien años de soledad - Gabriel García Márquez",
+					fechaPrestamo: "2025-05-01",
+					fechaDevolucion: "2025-05-08",
+					estado: "prestado",
+					observaciones: ""
+				},
+				{
+					id: 2,
+					usuarioId: 2,
+					usuario: "María González",
+					libroId: 2,
+					libro: "El principito - Antoine de Saint-Exupéry",
+					fechaPrestamo: "2025-05-03",
+					fechaDevolucion: "2025-05-10",
+					estado: "prestado",
+					observaciones: ""
+				},
+				{
+					id: 3,
+					usuarioId: 3,
+					usuario: "Carlos López",
+					libroId: 3,
+					libro: "Sapiens: De animales a dioses - Yuval Noah Harari",
+					fechaPrestamo: "2025-04-25",
+					fechaDevolucion: "2025-05-02",
+					estado: "atrasado",
+					observaciones: "Usuario notificado"
+				}
+			];
+
+			if (filtros.usuarioId) {
+				prestamos = prestamos.filter(p => p.usuarioId == filtros.usuarioId);
+			}
+
+			if (filtros.estado) {
+				prestamos = prestamos.filter(p => p.estado === filtros.estado);
+			}
+
+			if (filtros.fecha) {
+				var fechaFiltro = new Date(filtros.fecha);
+				var mes = fechaFiltro.getMonth() + 1;
+				var anio = fechaFiltro.getFullYear();
+
+				prestamos = prestamos.filter(p => {
+					var fechaPrestamo = new Date(p.fechaPrestamo);
+					return fechaPrestamo.getMonth() + 1 === mes &&
+						fechaPrestamo.getFullYear() === anio;
+				});
+			}
+
+			var tbody = document.querySelector("#tabla-prestamos tbody");
+			tbody.innerHTML = "";
+
+			prestamos.forEach(function (prestamo) {
+				var tr = document.createElement("tr");
+				tr.innerHTML = `
+						<td>${prestamo.id}</td>
+						<td>${prestamo.usuario}</td>
+						<td>${prestamo.libro}</td>
+						<td>${formatearFecha(prestamo.fechaPrestamo)}</td>
+						<td>${formatearFecha(prestamo.fechaDevolucion)}</td>
+						<td>${formatearEstado(prestamo.estado)}</td>
+						<td>
+							<button class="button small" onclick="editarPrestamo(${prestamo.id})">Editar</button>
+							<button class="button small" onclick="eliminarPrestamo(${prestamo.id})">Eliminar</button>
+						</td>
+					`;
+				tbody.appendChild(tr);
+			});
+		}
+
+		function formatearFecha(fecha) {
+			if (!fecha) return '';
+			var opciones = { year: 'numeric', month: 'short', day: 'numeric' };
+			return new Date(fecha).toLocaleDateString('es-CL', opciones);
+		}
+
+		function formatearEstado(estado) {
+			var clases = {
+				'prestado': 'estado-prestado',
+				'devuelto': 'estado-devuelto',
+				'atrasado': 'estado-atrasado',
+				'perdido': 'estado-perdido'
+			};
+
+			var textos = {
+				'prestado': 'Prestado',
+				'devuelto': 'Devuelto',
+				'atrasado': 'Atrasado',
+				'perdido': 'Perdido'
+			};
+
+			return `<span class="${clases[estado] || ''}">${textos[estado] || estado}</span>`;
+		}
+
+		function nuevoPrestamo() {
+			document.getElementById("prestamo-id").value = "";
+			document.getElementById("prestamo-usuario").value = "";
+			document.getElementById("prestamo-libro").value = "";
+
+			var hoy = new Date().toISOString().split('T')[0];
+			document.getElementById("prestamo-fecha-prestamo").value = hoy;
+
+			var fechaDevolucion = new Date();
+			fechaDevolucion.setDate(fechaDevolucion.getDate() + 7);
+			document.getElementById("prestamo-fecha-devolucion").value = fechaDevolucion.toISOString().split('T')[0];
+
+			document.getElementById("prestamo-estado").value = "prestado";
+			document.getElementById("prestamo-observaciones").value = "";
+		}
+
+		function guardarPrestamo() {
+			var id = document.getElementById("prestamo-id").value;
+			var usuarioId = document.getElementById("prestamo-usuario").value;
+			var libroId = document.getElementById("prestamo-libro").value;
+			var fechaPrestamo = document.getElementById("prestamo-fecha-prestamo").value;
+			var fechaDevolucion = document.getElementById("prestamo-fecha-devolucion").value;
+			var estado = document.getElementById("prestamo-estado").value;
+			var observaciones = document.getElementById("prestamo-observaciones").value;
+
+			if (!usuarioId || !libroId || !fechaPrestamo || !fechaDevolucion) {
+				alert("Por favor complete todos los campos obligatorios");
+				return;
+			}
+
+			if (new Date(fechaDevolucion) < new Date(fechaPrestamo)) {
+				alert("La fecha de devolución no puede ser anterior a la fecha de préstamo");
+				return;
+			}
+
+			console.log("Guardando préstamo:", {
+				id,
+				usuarioId,
+				libroId,
+				fechaPrestamo,
+				fechaDevolucion,
+				estado,
+				observaciones
+			});
+
+			cargarPrestamos();
+		}
+
+		function devolverPrestamo() {
+			var id = document.getElementById("prestamo-id").value;
+
+			if (!id) {
+				alert("Seleccione un préstamo para marcar como devuelto");
+				return;
+			}
+
+			if (confirm("¿Está seguro de marcar este préstamo como devuelto?")) {
+				console.log("Marcando préstamo como devuelto, ID:", id);
+
+				document.getElementById("prestamo-estado").value = "devuelto";
+
+				guardarPrestamo();
+			}
+		}
+
+		function eliminarPrestamo(id) {
+			if (!id) {
+				id = document.getElementById("prestamo-id").value;
+				if (!id) {
+					alert("Seleccione un préstamo para eliminar");
+					return;
+				}
+			}
+
+			if (confirm("¿Está seguro de que desea eliminar este préstamo?")) {
+				console.log("Eliminando préstamo con ID:", id);
+
+				cargarPrestamos();
+				nuevoPrestamo();
+			}
+		}
+
+		function editarPrestamo(id) {
+			var prestamos = [
+				{
+					id: 1,
+					usuarioId: 1,
+					usuario: "Juan Pérez",
+					libroId: 1,
+					libro: "Cien años de soledad - Gabriel García Márquez",
+					fechaPrestamo: "2025-05-01",
+					fechaDevolucion: "2025-05-08",
+					estado: "prestado",
+					observaciones: ""
+				},
+				{
+					id: 2,
+					usuarioId: 2,
+					usuario: "María González",
+					libroId: 2,
+					libro: "El principito - Antoine de Saint-Exupéry",
+					fechaPrestamo: "2025-05-03",
+					fechaDevolucion: "2025-05-10",
+					estado: "prestado",
+					observaciones: ""
+				},
+				{
+					id: 3,
+					usuarioId: 3,
+					usuario: "Carlos López",
+					libroId: 3,
+					libro: "Sapiens: De animales a dioses - Yuval Noah Harari",
+					fechaPrestamo: "2025-04-25",
+					fechaDevolucion: "2025-05-02",
+					estado: "atrasado",
+					observaciones: "Usuario notificado"
+				}
+			];
+
+			var prestamo = prestamos.find(function (p) {
+				return p.id == id;
+			});
+
+			if (prestamo) {
+				document.getElementById("prestamo-id").value = prestamo.id;
+				document.getElementById("prestamo-usuario").value = prestamo.usuarioId;
+				document.getElementById("prestamo-libro").value = prestamo.libroId;
+				document.getElementById("prestamo-fecha-prestamo").value = prestamo.fechaPrestamo;
+				document.getElementById("prestamo-fecha-devolucion").value = prestamo.fechaDevolucion;
+				document.getElementById("prestamo-estado").value = prestamo.estado;
+				document.getElementById("prestamo-observaciones").value = prestamo.observaciones || '';
+			}
+		}
+
+		function filtrarPrestamos() {
+			var filtros = {
+				usuarioId: document.getElementById("filtro-usuario").value || null,
+				estado: document.getElementById("filtro-estado").value || null,
+				fecha: document.getElementById("filtro-fecha").value || null
+			};
+
+			cargarPrestamos(filtros);
+		}
+
+		function limpiarFiltros() {
+			document.getElementById("filtro-usuario").value = "";
+			document.getElementById("filtro-estado").value = "";
+			document.getElementById("filtro-fecha").value = "";
+
+			cargarPrestamos();
+		}
+	</script>
+
+	<style>
+		.estado-prestado {
+			color: #2e7d32;
+			font-weight: bold;
+		}
+
+		.estado-devuelto {
+			color: #1565c0;
+		}
+
+		.estado-atrasado {
+			color: #d32f2f;
+			font-weight: bold;
+		}
+
+		.estado-perdido {
+			color: #d32f2f;
+			text-decoration: line-through;
+		}
+
+		tr.atrasado {
+			background-color: #ffebee;
+		}
+
+		tr.devuelto {
+			background-color: #e8f5e9;
+		}
+	</style>
+
+<!--  <h1> Autores: </h1>
+
+                                                                         :=:                  
+                                                                      :*+=-+*                  
+                                                                     -@-                       
+                                                                     %@                        
+                                                                     @%                        
+                                                                    .@*              .         
+                               .--==++++==:.                         :@*        :**++@@:        
+                        .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+                    .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+                 :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+               -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+              =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+              %@-         .-=-=@%           -%        %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+              -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+                +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+             :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+          :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+        :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+       =:                    .@= .+%%+:             #-#*:  =         @#                         
+       -                     -@.    .=%@#=.         =-      -*      -@-                         
+                             #*         -+%@*=:     =:       #%=-: .%=                          
+           ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+           .%               %+                                  ..       .::--===========--:.   
+            +%.            **                                                                   
+             +@+          *+                                                                    
+              .*@*=:   .=#-                                                                     
+                 :=*#%#*-    
+       -->
+
+</body>
+
+</html>

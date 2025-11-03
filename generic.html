@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Clases del Sistema - Biblioteca Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Biblioteca Digital</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li class="active"><a href="generic.html">Clases</a></li>
+				<li><a href="usuarios.html">Usuarios</a></li>
+				<li><a href="libros.html">Libros</a></li>
+				<li><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Usuario -->
+			<article class="post">
+				<header>
+					<h2>Clase: Usuario</h2>
+					<p>Gestión de usuarios del sistema de biblioteca</p>
+				</header>
+
+				<h3>Atributos:</h3>
+				<ul>
+					<li><strong>id_usuario</strong> (int): Identificador único del usuario</li>
+					<li><strong>nombre</strong> (string): Nombre del usuario</li>
+					<li><strong>apellido</strong> (string): Apellido del usuario</li>
+					<li><strong>fecha_registro</strong> (date): Fecha de registro del usuario</li>
+					<li><strong>estado</strong> (string): Estado actual del usuario (activo, inactivo, suspendido)</li>
+				</ul>
+
+				<h3>Métodos:</h3>
+				<div class="box">
+					<button class="button primary">registrar_usuario()</button>
+					<p>Registra un nuevo usuario en el sistema.</p>
+
+					<button class="button primary">actualizar_perfil()</button>
+					<p>Actualiza la información del perfil del usuario.</p>
+
+					<button class="button primary">ver_historial_prestamos()</button>
+					<p>Muestra el historial de préstamos del usuario.</p>
+				</div>
+			</article>
+
+			<!-- Libro -->
+			<article class="post">
+				<header>
+					<h2>Clase: Libro</h2>
+					<p>Gestión del catálogo de libros</p>
+				</header>
+
+				<h3>Atributos:</h3>
+				<ul>
+					<li><strong>id_libro</strong> (int): Identificador único del libro</li>
+					<li><strong>titulo</strong> (string): Título del libro</li>
+					<li><strong>autor</strong> (string): Autor del libro</li>
+					<li><strong>editorial</strong> (string): Editorial del libro</li>
+					<li><strong>isbn</strong> (string): Código ISBN del libro</li>
+					<li><strong>estado</strong> (string): Estado actual del libro (disponible, prestado, en reparación,
+						perdido)</li>
+				</ul>
+
+				<h3>Métodos:</h3>
+				<div class="box">
+					<button class="button primary">comprobar_disponibilidad()</button>
+					<p>Verifica si el libro está disponible para préstamo.</p>
+
+					<button class="button primary">obtener_detalles()</button>
+					<p>Muestra los detalles completos del libro.</p>
+				</div>
+			</article>
+
+			<!-- Bibliotecario -->
+			<article class="post">
+				<header>
+					<h2>Clase: Bibliotecario</h2>
+					<p>Gestión del personal de la biblioteca</p>
+				</header>
+
+				<h3>Atributos:</h3>
+				<ul>
+					<li><strong>id_bibliotecario</strong> (int): Identificador único del bibliotecario</li>
+					<li><strong>nombre</strong> (string): Nombre del bibliotecario</li>
+				</ul>
+
+				<h3>Métodos:</h3>
+				<div class="box">
+					<button class="button primary">emitir_libro()</button>
+					<p>Registra el préstamo de un libro a un usuario.</p>
+
+					<button class="button primary">devolver_libro()</button>
+					<p>Registra la devolución de un libro.</p>
+
+					<button class="button primary">registrar_usuario()</button>
+					<p>Registra un nuevo usuario en el sistema.</p>
+
+					<button class="button primary">gestionar_inventario()</button>
+					<p>Gestiona el inventario de la biblioteca.</p>
+				</div>
+			</article>
+
+			<!-- Préstamo -->
+			<article class="post">
+				<header>
+					<h2>Clase: Préstamo</h2>
+					<p>Gestión de préstamos de libros</p>
+				</header>
+
+				<h3>Atributos:</h3>
+				<ul>
+					<li><strong>id_prestamo</strong> (int): Identificador único del préstamo</li>
+					<li><strong>fecha_prestamo</strong> (date): Fecha en que se realizó el préstamo</li>
+					<li><strong>fecha_vencimiento</strong> (date): Fecha límite para la devolución</li>
+					<li><strong>fecha_devolucion</strong> (date): Fecha en que se devolvió el libro (opcional)</li>
+				</ul>
+
+				<h3>Métodos:</h3>
+				<div class="box">
+					<button class="button primary">crear_prestamo()</button>
+					<p>Crea un nuevo registro de préstamo.</p>
+
+					<button class="button primary">registrar_devolucion()</button>
+					<p>Registra la devolución de un libro prestado.</p>
+
+					<button class="button primary">calcular_sancion()</button>
+					<p>Calcula la sanción por retraso en la devolución.</p>
+				</div>
+			</article>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Tienes preguntas sobre el sistema?</h2>
+				<p>Si necesitas más información sobre el funcionamiento del sistema de gestión de la biblioteca, no
+					dudes en contactarnos.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:soporte@bibliotecadigital.cl">soporte@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Digital. Todos los derechos reservados.</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+<!--  <h1> Autores: </h1>
+
+                                                                    :=:                  
+                                                                 :*+=-+*                  
+                                                                -@-                       
+                                                                %@                        
+                                                                @%                        
+                                                               .@*              .         
+                         .:-==++++==:.                         :@*        :**++@@:        
+                  .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+              .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+           :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+         -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+        =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+        %@-         .-=-=@%           -%-       %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+        -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+          +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+       :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+    :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+  :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+ =:                    .@= .+%%+:             #-#*:  =         @#                         
+ -                     -@.    .=%@#=.         =-      -*      -@-                         
+                       #*         -+%@*=:     =:       #%=-: .%=                          
+     ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+     .%               %+                                  ..       .::--===========--:.   
+      +%.            **                                                                   
+       +@+          *+                                                                    
+        .*@*=:   .=#-                                                                     
+           :=*#%#*-    
+-->
+
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<!--
+	Módulo de Bibliotecarios - Biblioteca Digital
+-->
+<html>
+
+<head>
+	<title>Bibliotecarios - Biblioteca Digital</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Biblioteca Digital</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="generic.html">Clases</a></li>
+				<li><a href="usuarios.html">Usuarios</a></li>
+				<li><a href="libros.html">Libros</a></li>
+				<li class="active"><a href="bibliotecarios.html">Bibliotecarios</a></li>
+				<li><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<section class="post">
+				<header class="major">
+					<h1>Gestión de Bibliotecarios</h1>
+					<p>Administra los bibliotecarios del sistema</p>
+				</header>
+
+				<!-- Formulario de Bibliotecarios -->
+				<div class="row gtr-uniform">
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-id">ID Bibliotecario</label>
+						<input type="text" name="bibliotecario-id" id="bibliotecario-id" value=""
+							placeholder="ID (automático)" disabled />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-nombre">Nombre</label>
+						<input type="text" name="bibliotecario-nombre" id="bibliotecario-nombre" value=""
+							placeholder="Nombre del bibliotecario" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-apellido">Apellido</label>
+						<input type="text" name="bibliotecario-apellido" id="bibliotecario-apellido" value=""
+							placeholder="Apellido del bibliotecario" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-email">Email</label>
+						<input type="email" name="bibliotecario-email" id="bibliotecario-email" value=""
+							placeholder="bibliotecario@ejemplo.com" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-telefono">Teléfono</label>
+						<input type="text" name="bibliotecario-telefono" id="bibliotecario-telefono" value=""
+							placeholder="+56 9 1234 5678" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-usuario">Nombre de usuario</label>
+						<input type="text" name="bibliotecario-usuario" id="bibliotecario-usuario" value=""
+							placeholder="Nombre de usuario" />
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-rol">Rol</label>
+						<select name="bibliotecario-rol" id="bibliotecario-rol">
+							<option value="bibliotecario">Bibliotecario</option>
+							<option value="administrador">Administrador</option>
+						</select>
+					</div>
+					<div class="col-6 col-12-xsmall">
+						<label for="bibliotecario-estado">Estado</label>
+						<select name="bibliotecario-estado" id="bibliotecario-estado">
+							<option value="activo">Activo</option>
+							<option value="inactivo">Inactivo</option>
+							<option value="vacaciones">De vacaciones</option>
+						</select>
+					</div>
+					<div class="col-12">
+						<hr>
+						<ul class="actions">
+							<li><input type="button" value="Nuevo" class="primary" onclick="nuevoBibliotecario()" />
+							</li>
+							<li><input type="button" value="Guardar" class="primary" onclick="guardarBibliotecario()" />
+							</li>
+							<li><input type="button" value="Eliminar" class="button"
+									onclick="eliminarBibliotecario()" /></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Tabla de bibliotecarios -->
+				<h3>Bibliotecarios Registrados</h3>
+				<div class="table-wrapper">
+					<table id="tabla-bibliotecarios" class="alt">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Email</th>
+								<th>Usuario</th>
+								<th>Rol</th>
+								<th>Estado</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Los datos se cargarán dinámicamente con JavaScript -->
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Necesitas ayuda?</h2>
+				<p>Si tienes alguna pregunta sobre la gestión de bibliotecarios, no dudes en contactar al administrador
+					del sistema.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:admin@bibliotecadigital.cl">admin@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Raices Eternas. Creado por Rafa #22 y Yani #15 - 6to DAAI</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<!-- Scripts específicos para la gestión de bibliotecarios -->
+	<script>
+		// Cargar bibliotecarios al iniciar la página
+		document.addEventListener("DOMContentLoaded", function () {
+			cargarBibliotecarios();
+		});
+
+		// Función para cargar los bibliotecarios en la tabla
+		function cargarBibliotecarios() {
+			// Datos de ejemplo (en un sistema real, esto vendría de una API)
+			var bibliotecarios = [
+				{ id: 1, nombre: "Ana", apellido: "González", email: "ana.gonzalez@biblioteca.cl", usuario: "agonzalez", rol: "administrador", estado: "activo", telefono: "+56 9 1234 5678" },
+				{ id: 2, nombre: "Carlos", apellido: "Muñoz", email: "carlos.munoz@biblioteca.cl", usuario: "cmunoz", rol: "bibliotecario", estado: "activo", telefono: "+56 9 8765 4321" },
+				{ id: 3, nombre: "Laura", apellido: "Sánchez", email: "laura.sanchez@biblioteca.cl", usuario: "lsanchez", rol: "bibliotecario", estado: "vacaciones", telefono: "+56 9 5555 1234" }
+			];
+
+			var tbody = document.querySelector("#tabla-bibliotecarios tbody");
+			tbody.innerHTML = "";
+
+			bibliotecarios.forEach(function (bibliotecario) {
+				var tr = document.createElement("tr");
+				tr.innerHTML = `
+						<td>${bibliotecario.id}</td>
+						<td>${bibliotecario.nombre}</td>
+						<td>${bibliotecario.apellido}</td>
+						<td>${bibliotecario.email}</td>
+						<td>${bibliotecario.usuario}</td>
+						<td>${bibliotecario.rol}</td>
+						<td>${bibliotecario.estado}</td>
+						<td>
+							<button class="button small" onclick="editarBibliotecario(${bibliotecario.id})">Editar</button>
+							<button class="button small" onclick="eliminarBibliotecario(${bibliotecario.id})">Eliminar</button>
+						</td>
+					`;
+				tbody.appendChild(tr);
+			});
+		}
+
+		// Función para limpiar el formulario
+		function nuevoBibliotecario() {
+			document.getElementById("bibliotecario-id").value = "";
+			document.getElementById("bibliotecario-nombre").value = "";
+			document.getElementById("bibliotecario-apellido").value = "";
+			document.getElementById("bibliotecario-email").value = "";
+			document.getElementById("bibliotecario-telefono").value = "";
+			document.getElementById("bibliotecario-usuario").value = "";
+			document.getElementById("bibliotecario-rol").value = "bibliotecario";
+			document.getElementById("bibliotecario-estado").value = "activo";
+		}
+
+		// Función para guardar un bibliotecario
+		function guardarBibliotecario() {
+			// Obtener los valores del formulario
+			var id = document.getElementById("bibliotecario-id").value;
+			var nombre = document.getElementById("bibliotecario-nombre").value;
+			var apellido = document.getElementById("bibliotecario-apellido").value;
+			var email = document.getElementById("bibliotecario-email").value;
+			var telefono = document.getElementById("bibliotecario-telefono").value;
+			var usuario = document.getElementById("bibliotecario-usuario").value;
+			var rol = document.getElementById("bibliotecario-rol").value;
+			var estado = document.getElementById("bibliotecario-estado").value;
+
+			// Validar campos obligatorios
+			if (!nombre || !apellido || !email || !usuario) {
+				alert("Por favor complete todos los campos obligatorios");
+				return;
+			}
+
+			// Validar formato de email
+			if (!/^\S+@\S+\.\S+$/.test(email)) {
+				alert("Por favor ingrese un email válido");
+				return;
+			}
+
+			// En un sistema real, aquí se haría una llamada a la API para guardar los datos
+			console.log("Guardando bibliotecario:", { id, nombre, apellido, email, telefono, usuario, rol, estado });
+
+			// Recargar la tabla
+			cargarBibliotecarios();
+		}
+
+		// Función para eliminar un bibliotecario
+		function eliminarBibliotecario(id) {
+			if (!id) {
+				alert("Seleccione un bibliotecario para eliminar");
+				return;
+			}
+
+			if (confirm("¿Está seguro de que desea eliminar este bibliotecario?")) {
+				// En un sistema real, aquí se haría una llamada a la API para eliminar el bibliotecario
+				console.log("Eliminando bibliotecario con ID:", id);
+
+				// Recargar la tabla
+				cargarBibliotecarios();
+				nuevoBibliotecario(); // Limpiar el formulario
+			}
+		}
+
+		// Función para cargar los datos de un bibliotecario en el formulario
+		function editarBibliotecario(id) {
+			// En un sistema real, aquí se haría una llamada a la API para obtener los datos del bibliotecario
+			var bibliotecarios = [
+				{ id: 1, nombre: "Ana", apellido: "González", email: "ana.gonzalez@biblioteca.cl", usuario: "agonzalez", rol: "administrador", estado: "activo", telefono: "+56 9 1234 5678" },
+				{ id: 2, nombre: "Carlos", apellido: "Muñoz", email: "carlos.munoz@biblioteca.cl", usuario: "cmunoz", rol: "bibliotecario", estado: "activo", telefono: "+56 9 8765 4321" },
+				{ id: 3, nombre: "Laura", apellido: "Sánchez", email: "laura.sanchez@biblioteca.cl", usuario: "lsanchez", rol: "bibliotecario", estado: "vacaciones", telefono: "+56 9 5555 1234" }
+			];
+
+			var bibliotecario = bibliotecarios.find(function (b) {
+				return b.id == id;
+			});
+
+			if (bibliotecario) {
+				document.getElementById("bibliotecario-id").value = bibliotecario.id;
+				document.getElementById("bibliotecario-nombre").value = bibliotecario.nombre;
+				document.getElementById("bibliotecario-apellido").value = bibliotecario.apellido;
+				document.getElementById("bibliotecario-email").value = bibliotecario.email;
+				document.getElementById("bibliotecario-telefono").value = bibliotecario.telefono;
+				document.getElementById("bibliotecario-usuario").value = bibliotecario.usuario;
+				document.getElementById("bibliotecario-rol").value = bibliotecario.rol;
+				document.getElementById("bibliotecario-estado").value = bibliotecario.estado;
+			}
+		}
+	</script>
+
+<!--  <h1> Autores: </h1>
+
+                                                                         :=:                  
+                                                                      :*+=-+*                  
+                                                                     -@-                       
+                                                                     %@                        
+                                                                     @%                        
+                                                                    .@*              .         
+                               .--==++++==:.                         :@*        :**++@@:        
+                        .-+++++--::.::--+*%@@*:                 .:---+@#***+=-+%#=-:-@%         
+                    .=**=:     #@          .=@@+     .:-------=-:.=*##@#:.   .@*    #@-         
+                 :+%*-         @@            -@@+==--:.  -*++#@@  :. :@=     #@.   :@@:         
+               -%@+            @@    .:-=---:.*@.      =%=   #@#     -@=    .@#    *@@:         
+              =@%             .@%-===-.      .@=      :@+    @@.     -@- .:-*@*===**%@:   .     
+              %@-         .-=-=@%           -%        %@    -@@     .+@+--:.+@.  -+ %@+-.=      
+              -@*.   .-==-:   :@*        .=#=        :@+    #@@  -==:+@:    +@. =+  *@%*+       
+                +%**+:        -@=    .-+*+:          +@.   +-@@=-..  +@:    =@##=    =-         
+             :==:. .-:       =+@=-+++=:              #@   +--@@. .=  *@.     ++.                
+          :+=.               *@@#:.                  %%  ++:=@@*=-   #@.                        
+        :=:                   %%%%+:               ::#@=*= + =*=.    %@                         
+       =:                    .@= .+%%+:             #-#*:  =         @#                         
+       -                     -@.    .=%@#=.         =-      -*      -@-                         
+                             #*         -+%@*=:     =:       #%=-: .%=                          
+           ..               :@.            .-+#%%%#*-        .#@++#+=---::..              ..:-=.
+           .%               %+                                  ..       .::--===========--:.   
+            +%.            **                                                                   
+             +@+          *+                                                                    
+              .*@*=:   .=#-                                                                     
+                 :=*#%#*-    
+       -->
+
+</body>
+
+</html>

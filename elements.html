@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Elements Reference - Massively by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" type="image/png" href="images/logo.png">
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Massively</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="index.html">Inicio</a></li>
+				<li class="active"><a href="elements.html">Clases</a></li>
+				<li><a href="usuarios.html">Usuarios</a></li>
+				<li><a href="libros.html">Libros</a></li>
+				<li><a href="prestamos.html">Préstamos</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+			</ul>
+		</nav>
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Pestañas -->
+			<section class="post">
+				<header class="major">
+					<h1>Sistema de Gestión<br />
+						Biblioteca Digital</h1>
+					<p>Utiliza las pestañas para acceder a los diferentes módulos del sistema.</p>
+				</header>
+
+				<!-- Navegación por pestañas -->
+				<div class="tabs">
+					<button class="tab-button active" onclick="openTab(event, 'usuario')">Usuarios</button>
+					<button class="tab-button" onclick="openTab(event, 'libro')">Libros</button>
+					<button class="tab-button" onclick="openTab(event, 'bibliotecario')">Bibliotecarios</button>
+					<button class="tab-button" onclick="openTab(event, 'prestamo')">Préstamos</button>
+				</div>
+
+				<!-- Contenido de las pestañas -->
+
+				<!-- Pestaña de Usuarios -->
+				<div id="usuario" class="tab-content" style="display: block;">
+					<h2>Gestión de Usuarios</h2>
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall">
+							<label for="usuario-id">ID Usuario</label>
+							<input type="text" name="usuario-id" id="usuario-id" value="" placeholder="ID (automático)"
+								disabled />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="usuario-nombre">Nombre</label>
+							<input type="text" name="usuario-nombre" id="usuario-nombre" value=""
+								placeholder="Nombre del usuario" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="usuario-apellido">Apellido</label>
+							<input type="text" name="usuario-apellido" id="usuario-apellido" value=""
+								placeholder="Apellido del usuario" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="usuario-estado">Estado</label>
+							<select name="usuario-estado" id="usuario-estado">
+								<option value="activo">Activo</option>
+								<option value="inactivo">Inactivo</option>
+								<option value="suspendido">Suspendido</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<hr>
+							<ul class="actions">
+								<li><input type="button" value="Nuevo" class="primary" onclick="nuevoUsuario()" /></li>
+								<li><input type="button" value="Guardar" class="primary" onclick="guardarUsuario()" />
+								</li>
+								<li><input type="button" value="Eliminar" class="button" onclick="eliminarUsuario()" />
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Tabla de usuarios -->
+					<h3>Usuarios Registrados</h3>
+					<div class="table-wrapper">
+						<table id="tabla-usuarios" class="alt">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Estado</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Los datos se cargarán dinámicamente con JavaScript -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Pestaña de Libros -->
+				<div id="libro" class="tab-content">
+					<h2>Gestión de Libros</h2>
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall">
+							<label for="libro-id">ID Libro</label>
+							<input type="text" name="libro-id" id="libro-id" value="" placeholder="ID (automático)"
+								disabled />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="libro-titulo">Título</label>
+							<input type="text" name="libro-titulo" id="libro-titulo" value=""
+								placeholder="Título del libro" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="libro-autor">Autor</label>
+							<input type="text" name="libro-autor" id="libro-autor" value=""
+								placeholder="Autor del libro" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="libro-isbn">ISBN</label>
+							<input type="text" name="libro-isbn" id="libro-isbn" value="" placeholder="Código ISBN" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="libro-estado">Estado</label>
+							<select name="libro-estado" id="libro-estado">
+								<option value="disponible">Disponible</option>
+								<option value="prestado">Prestado</option>
+								<option value="reparacion">En reparación</option>
+								<option value="perdido">Perdido</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<hr>
+							<ul class="actions">
+								<li><input type="button" value="Nuevo" class="primary" onclick="nuevoLibro()" /></li>
+								<li><input type="button" value="Guardar" class="primary" onclick="guardarLibro()" />
+								</li>
+								<li><input type="button" value="Eliminar" class="button" onclick="eliminarLibro()" />
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Tabla de libros -->
+					<h3>Catálogo de Libros</h3>
+					<div class="table-wrapper">
+						<table id="tabla-libros" class="alt">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Título</th>
+									<th>Autor</th>
+									<th>ISBN</th>
+									<th>Estado</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Los datos se cargarán dinámicamente con JavaScript -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Pestaña de Bibliotecarios -->
+				<div id="bibliotecario" class="tab-content">
+					<h2>Gestión de Bibliotecarios</h2>
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall">
+							<label for="biblio-id">ID Bibliotecario</label>
+							<input type="text" name="biblio-id" id="biblio-id" value="" placeholder="ID (automático)"
+								disabled />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="biblio-nombre">Nombre</label>
+							<input type="text" name="biblio-nombre" id="biblio-nombre" value=""
+								placeholder="Nombre del bibliotecario" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="biblio-usuario">Usuario</label>
+							<input type="text" name="biblio-usuario" id="biblio-usuario" value=""
+								placeholder="Nombre de usuario" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="biblio-clave">Contraseña</label>
+							<input type="password" name="biblio-clave" id="biblio-clave" value=""
+								placeholder="Contraseña" />
+						</div>
+						<div class="col-12">
+							<hr>
+							<ul class="actions">
+								<li><input type="button" value="Nuevo" class="primary" onclick="nuevoBibliotecario()" />
+								</li>
+								<li><input type="button" value="Guardar" class="primary"
+										onclick="guardarBibliotecario()" /></li>
+								<li><input type="button" value="Eliminar" class="button"
+										onclick="eliminarBibliotecario()" /></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Tabla de bibliotecarios -->
+					<h3>Bibliotecarios Registrados</h3>
+					<div class="table-wrapper">
+						<table id="tabla-bibliotecarios" class="alt">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Usuario</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Los datos se cargarán dinámicamente con JavaScript -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Pestaña de Préstamos -->
+				<div id="prestamo" class="tab-content">
+					<h2>Gestión de Préstamos</h2>
+					<div class="row gtr-uniform">
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-id">ID Préstamo</label>
+							<input type="text" name="prestamo-id" id="prestamo-id" value=""
+								placeholder="ID (automático)" disabled />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-libro">Libro</label>
+							<select name="prestamo-libro" id="prestamo-libro">
+								<!-- Se llenará dinámicamente con los libros disponibles -->
+							</select>
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-usuario">Usuario</label>
+							<select name="prestamo-usuario" id="prestamo-usuario">
+								<!-- Se llenará dinámicamente con los usuarios activos -->
+							</select>
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-fecha">Fecha de Préstamo</label>
+							<input type="date" name="prestamo-fecha" id="prestamo-fecha" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-vencimiento">Fecha de Vencimiento</label>
+							<input type="date" name="prestamo-vencimiento" id="prestamo-vencimiento" />
+						</div>
+						<div class="col-6 col-12-xsmall">
+							<label for="prestamo-estado">Estado</label>
+							<select name="prestamo-estado" id="prestamo-estado">
+								<option value="activo">Activo</option>
+								<option value="devuelto">Devuelto</option>
+								<option value="vencido">Vencido</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<hr>
+							<ul class="actions">
+								<li><input type="button" value="Nuevo" class="primary" onclick="nuevoPrestamo()" /></li>
+								<li><input type="button" value="Guardar" class="primary" onclick="guardarPrestamo()" />
+								</li>
+								<li><input type="button" value="Devolver" class="button" onclick="devolverPrestamo()" />
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Tabla de préstamos -->
+					<h3>Registro de Préstamos</h3>
+					<div class="table-wrapper">
+						<table id="tabla-prestamos" class="alt">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Libro</th>
+									<th>Usuario</th>
+									<th>Fecha Préstamo</th>
+									<th>Vencimiento</th>
+									<th>Estado</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Los datos se cargarán dinámicamente con JavaScript -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<h2>¿Necesitas ayuda con el sistema?</h2>
+				<p>Si tienes alguna pregunta o necesitas asistencia con el sistema de gestión de la biblioteca, no dudes
+					en contactar a nuestro equipo de soporte.</p>
+				<ul class="actions">
+					<li><a href="index.html#footer" class="button">Contáctanos</a></li>
+				</ul>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Dirección</h3>
+					<p>Av. Principal #1234<br />
+						Santiago, Región Metropolitana<br />
+						Chile</p>
+				</section>
+				<section>
+					<h3>Teléfono</h3>
+					<p><a href="tel:+56221234567">(2) 2123 4567</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="mailto:soporte@bibliotecadigital.cl">soporte@bibliotecadigital.cl</a></p>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; 2025 Biblioteca Digital. Todos los derechos reservados.</li>
+				<li>Diseño: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<!-- Scripts para las funcionalidades del sistema -->
+	<script>
+		// Función para cambiar entre pestañas
+		function openTab(evt, tabName) {
+			// Ocultar todos los contenidos de pestañas
+			var tabContents = document.getElementsByClassName("tab-content");
+			for (var i = 0; i < tabContents.length; i++) {
+				tabContents[i].style.display = "none";
+			}
+
+			// Desactivar todos los botones de pestañas
+			tabButtons = document.getElementsByClassName("tab-button");
+			for (var i = 0; i < tabButtons.length; i++) {
+				tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+			}
+
+			// Mostrar la pestaña actual y marcar el botón como activo
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+
+			// Cargar datos de la pestaña si es necesario
+			if (tabName === 'usuario') cargarUsuarios();
+			else if (tabName === 'libro') cargarLibros();
+			else if (tabName === 'bibliotecario') cargarBibliotecarios();
+			else if (tabName === 'prestamo') cargarPrestamos();
+		}
+
+		// Funciones para Usuarios
+		function cargarUsuarios() {
+			// Aquí iría el código para cargar usuarios desde una API o localStorage
+			// Por ahora, usaremos datos de ejemplo
+			var usuarios = [
+				{ id: 1, nombre: "Juan", apellido: "Pérez", estado: "activo" },
+				{ id: 2, nombre: "María", apellido: "González", estado: "activo" },
+				{ id: 3, nombre: "Carlos", apellido: "López", estado: "inactivo" }
+			];
+
+			var tbody = document.querySelector("#tabla-usuarios tbody");
+			tbody.innerHTML = "";
+
+			usuarios.forEach(function (usuario) {
+				var tr = document.createElement("tr");
+				tr.innerHTML = `
+						<td>${usuario.id}</td>
+						<td>${usuario.nombre}</td>
+						<td>${usuario.apellido}</td>
+						<td>${usuario.estado}</td>
+						<td>
+							<button class="button small" onclick="editarUsuario(${usuario.id})">Editar</button>
+							<button class="button small" onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
+						</td>
+					`;
+				tbody.appendChild(tr);
+			});
+		}
+
+		function nuevoUsuario() {
+			document.getElementById("usuario-id").value = "";
+			document.getElementById("usuario-nombre").value = "";
+			document.getElementById("usuario-apellido").value = "";
+			document.getElementById("usuario-estado").value = "activo";
+		}
+
+		function guardarUsuario() {
+			var id = document.getElementById("usuario-id").value;
+			var nombre = document.getElementById("usuario-nombre").value;
+			var apellido = document.getElementById("usuario-apellido").value;
+			var estado = document.getElementById("usuario-estado").value;
+
+			if (!nombre || !apellido) {
+				alert("Por favor complete todos los campos obligatorios");
+				return;
+			}
+
+			// Aquí iría el código para guardar el usuario en una API o localStorage
+			alert(`Usuario ${id ? 'actualizado' : 'guardado'} correctamente`);
+			cargarUsuarios();
+		}
+
+		function eliminarUsuario(id) {
+			if (confirm("¿Está seguro de eliminar este usuario?")) {
+				// Aquí iría el código para eliminar el usuario de una API o localStorage
+				alert("Usuario eliminado correctamente");
+				cargarUsuarios();
+			}
+		}
+
+		function editarUsuario(id) {
+			// Aquí iría el código para cargar los datos del usuario
+			// Por ahora, usaremos datos de ejemplo
+			document.getElementById("usuario-id").value = id;
+			document.getElementById("usuario-nombre").value = "Nombre Ejemplo";
+			document.getElementById("usuario-apellido").value = "Apellido Ejemplo";
+			document.getElementById("usuario-estado").value = "activo";
+		}
+
+		// Funciones para Libros (similares a las de usuarios)
+		function cargarLibros() {
+			// Código para cargar libros
+		}
+
+		function nuevoLibro() {
+			// Código para nuevo libro
+		}
+
+		function guardarLibro() {
+			// Código para guardar libro
+		}
+
+		// Funciones para Bibliotecarios (similares a las de usuarios)
+		function cargarBibliotecarios() {
+			// Código para cargar bibliotecarios
+		}
+
+		// Funciones para Préstamos (similares a las de usuarios)
+		function cargarPrestamos() {
+			// Código para cargar préstamos
+		}
+
+		// Cargar la primera pestaña por defecto
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector(".tab-button").click();
+		});
+	</script>
+</body>
+
+</html>
