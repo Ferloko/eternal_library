@@ -202,36 +202,41 @@
 </html>
 
 	<script>
+		const API_URL = 'http://localhost:3000/api/usuarios';
+
 		document.addEventListener("DOMContentLoaded", function () {
 			cargarUsuarios();
 		});
 
-		function cargarUsuarios() {
-			var usuarios = [
-				{ id: 1, nombre: "Juan", apellido: "Pérez", email: "juan.perez@ejemplo.com", telefono: "+56 9 1234 5678", estado: "activo" },
-				{ id: 2, nombre: "María", apellido: "González", email: "maria.gonzalez@ejemplo.com", telefono: "+56 9 8765 4321", estado: "activo" },
-				{ id: 3, nombre: "Carlos", apellido: "López", email: "carlos.lopez@ejemplo.com", telefono: "+56 9 5555 1234", estado: "inactivo" }
-			];
+		async function cargarUsuarios() {
+			try {
+				const response = await fetch(API_URL);
+				if (!response.ok) throw new Error('Error al cargar usuarios');
+				
+				const usuarios = await response.json();
+				var tbody = document.querySelector("#tabla-usuarios tbody");
+				tbody.innerHTML = "";
 
-			var tbody = document.querySelector("#tabla-usuarios tbody");
-			tbody.innerHTML = "";
-
-			usuarios.forEach(function (usuario) {
-				var tr = document.createElement("tr");
-				tr.innerHTML = `
-						<td>${usuario.id}</td>
-						<td>${usuario.nombre}</td>
-						<td>${usuario.apellido}</td>
-						<td>${usuario.email}</td>
-						<td>${usuario.telefono}</td>
-						<td>${usuario.estado}</td>
-						<td>
-							<button class="button small" onclick="editarUsuario(${usuario.id})">Editar</button>
-							<button class="button small" onclick="eliminarUsuario(${usuario.id})">Eliminar</button>
-						</td>
-					`;
-				tbody.appendChild(tr);
-			});
+				usuarios.forEach(function (usuario) {
+					var tr = document.createElement("tr");
+					tr.innerHTML = `
+							<td>${usuario._id}</td>
+							<td>${usuario.nombre || ''}</td>
+							<td>${usuario.apellido || ''}</td>
+							<td>${usuario.email || ''}</td>
+							<td>${usuario.telefono || ''}</td>
+							<td>${usuario.estado || 'activo'}</td>
+							<td>
+								<button class="button small" onclick="editarUsuario('${usuario._id}')">Editar</button>
+								<button class="button small" onclick="eliminarUsuario('${usuario._id}')">Eliminar</button>
+							</td>
+						`;
+					tbody.appendChild(tr);
+				});
+			} catch (error) {
+				console.error('Error:', error);
+				alert('Error al cargar los usuarios');
+			}
 		}
 
 		function nuevoUsuario() {
@@ -243,52 +248,87 @@
 			document.getElementById("usuario-estado").value = "activo";
 		}
 
-		function guardarUsuario() {
-			var id = document.getElementById("usuario-id").value;
-			var nombre = document.getElementById("usuario-nombre").value;
-			var apellido = document.getElementById("usuario-apellido").value;
-			var email = document.getElementById("usuario-email").value;
-			var telefono = document.getElementById("usuario-telefono").value;
-			var estado = document.getElementById("usuario-estado").value;
+		async function guardarUsuario() {
+			const id = document.getElementById("usuario-id").value;
+			const usuario = {
+				nombre: document.getElementById("usuario-nombre").value,
+				apellido: document.getElementById("usuario-apellido").value,
+				email: document.getElementById("usuario-email").value,
+				telefono: document.getElementById("usuario-telefono").value,
+				estado: document.getElementById("usuario-estado").value || 'activo'
+			};
 
-			if (!nombre || !apellido || !email) {
-				alert("Por favor complete los campos obligatorios (Nombre, Apellido y Email)");
+			if (!usuario.nombre || !usuario.email) {
+				alert("Por favor complete los campos obligatorios (Nombre y Email)");
 				return;
 			}
 
-			alert(`Usuario ${id ? 'actualizado' : 'guardado'} correctamente`);
-			cargarUsuarios();
-			nuevoUsuario(); 
-		}
+			try {
+				const url = id ? `${API_URL}/${id}` : API_URL;
+				const method = id ? 'PUT' : 'POST';
 
-		function eliminarUsuario(id) {
-			if (id) {
-				if (confirm("¿Está seguro de eliminar este usuario?")) {
-					alert("Usuario eliminado correctamente");
-					cargarUsuarios();
-					nuevoUsuario();
-				}
-			} else {
-				alert("Seleccione un usuario para eliminar");
+				const response = await fetch(url, {
+					method: method,
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(usuario)
+				});
+
+				if (!response.ok) throw new Error('Error al guardar el usuario');
+
+				alert(`Usuario ${id ? 'actualizado' : 'guardado'} correctamente`);
+				cargarUsuarios();
+				nuevoUsuario();
+			} catch (error) {
+				console.error('Error:', error);
+				alert('Error al guardar el usuario');
 			}
 		}
 
-		function editarUsuario(id) {
-			var usuario = {
-				id: id,
-				nombre: "Nombre Ejemplo",
-				apellido: "Apellido Ejemplo",
-				email: "ejemplo@ejemplo.com",
-				telefono: "+56 9 9999 9999",
-				estado: "activo"
-			};
+		async function eliminarUsuario(id) {
+			if (!id) {
+				alert("Seleccione un usuario para eliminar");
+				return;
+			}
 
-			document.getElementById("usuario-id").value = usuario.id;
-			document.getElementById("usuario-nombre").value = usuario.nombre;
-			document.getElementById("usuario-apellido").value = usuario.apellido;
-			document.getElementById("usuario-email").value = usuario.email;
-			document.getElementById("usuario-telefono").value = usuario.telefono;
-			document.getElementById("usuario-estado").value = usuario.estado;
+			if (!confirm("¿Está seguro de eliminar este usuario?")) {
+				return;
+			}
+
+			try {
+				const response = await fetch(`${API_URL}/${id}`, {
+					method: 'DELETE'
+				});
+
+				if (!response.ok) throw new Error('Error al eliminar el usuario');
+
+				alert("Usuario eliminado correctamente");
+				cargarUsuarios();
+				nuevoUsuario();
+			} catch (error) {
+				console.error('Error:', error);
+				alert('Error al eliminar el usuario');
+			}
+		}
+
+		async function editarUsuario(id) {
+			try {
+				const response = await fetch(`${API_URL}/${id}`);
+				if (!response.ok) throw new Error('Error al cargar el usuario');
+
+				const usuario = await response.json();
+
+				document.getElementById("usuario-id").value = usuario._id;
+				document.getElementById("usuario-nombre").value = usuario.nombre || '';
+				document.getElementById("usuario-apellido").value = usuario.apellido || '';
+				document.getElementById("usuario-email").value = usuario.email || '';
+				document.getElementById("usuario-telefono").value = usuario.telefono || '';
+				document.getElementById("usuario-estado").value = usuario.estado || 'activo';
+			} catch (error) {
+				console.error('Error:', error);
+				alert('Error al cargar los datos del usuario');
+			}
 		}
 	</script>
 
