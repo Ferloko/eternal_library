@@ -1,0 +1,24 @@
+{
+    "name": "biblioteca-raices-eternas/sistema-gestion",
+    "description": "Sistema de gestión de biblioteca digital con MongoDB",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rafa",
+            "role": "Developer #22"
+        },
+        {
+            "name": "Yani",
+            "role": "Developer #15"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "mongodb/mongodb": "^1.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "BibliotecaDigital\\": "php/"
+        }
+    }
+}
